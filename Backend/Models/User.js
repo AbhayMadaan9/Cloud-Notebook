@@ -13,11 +13,15 @@ const userSchema = new Schema({
   },
   password:{
     type:String,
-    Required: true
+    Required: true,
+    unique:true    //its like candidate/primary key 
   },
   phone:{
-    type:Number,
+    type:Number, 
     Required: true
   }
 });
+
+
+
 module.exports = mongoose.model('user', userSchema)

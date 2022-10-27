@@ -8,7 +8,8 @@ app.use(express.json())    //this is a middleware this helps in sending the json
 
 //Endpoints/Api's (we will store our end points in routes/API'S for that we use router of express)
 
-app.use('/SignIn',require('./apis/sign_in')) //when url is /sign it will start the function of ./apis/sign_in 
+app.use('/SignUp',require('./apis/Sign_up')) //when url is /sign it will start the function of ./apis/sign_in 
+app.use('/SignIn',require('./apis/Sign_in')) //when url is /sign it will start the function of ./apis/sign_in 
 
 
 
