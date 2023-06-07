@@ -1,23 +1,19 @@
-const mongodb = require('./database_connection.js')
+const connectToMongo = require('./db');
 const express = require('express')
+var cors = require('cors') 
+
+//connectToMongo();
 const app = express()
-const port = 3000
-app.use(express.json())    //this is a middleware this helps in sending the json content to the server(i.e. given the request containing json content to server)
+const port = 5000
+
+app.use(cors())
+app.use(express.json())
+
+// Available Routes
+app.use('/api/auth', require('./routes/auth'))
+app.use('/api/notes', require('./routes/notes'))
 
 
-
-//Endpoints/Api's (we will store our end points in routes/API'S for that we use router of express)
-
-app.use('/SignUp',require('./apis/Sign_up')) //when url is /sign it will start the function of ./apis/sign_in 
-app.use('/SignIn',require('./apis/Sign_in')) //when url is /sign it will start the function of ./apis/sign_in 
-app.use('/GetUser', require('./apis/Get_user'))
-app.use('/UserNotes', require('./apis/Fetch_notes'))
-app.use('/AddNote', require('./apis/Add_notes'))
-app.use('/UpdateNote/', require('./apis/Update_note'))
-app.use('/DeleteNote/', require('./apis/Delete_note'))
-
-
-//Listening the server
 app.listen(port, () => {
-  console.log(`Server is started at 127.0.0.1:3000`)
+  console.log(`iNotebook backend listening at http://localhost:${port}`)
 })
